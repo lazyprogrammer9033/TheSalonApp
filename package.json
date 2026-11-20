@@ -1,0 +1,31 @@
+{
+  "name": "the-salon-app",
+  "version": "1.0.0",
+  "description": "The Salon App: salon management for customers, check-in, billing, receipts, reports and backups.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test test/*.test.js",
+    "demo:reset": "node scripts/reset-demo.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazyprogrammer9033/TheSalonApp.git"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/lazyprogrammer9033/TheSalonApp/issues"
+  },
+  "homepage": "https://github.com/lazyprogrammer9033/TheSalonApp#readme",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "nodemailer": "^10.0.16",
+    "pdfkit": "^0.20.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
+}
