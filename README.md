@@ -130,6 +130,24 @@ Everything is in the `data` folder next to the app:
 
 ---
 
+## Live demo on Google Cloud (free tier, $1 kill switch)
+
+`cloud/deploy.sh` puts the sales demo online on Google Cloud Run in a new project of its own. Open [Google Cloud Shell](https://shell.cloud.google.com) and run:
+
+```bash
+git clone -b claude/project-thread-f5ca4q https://github.com/lazyprogrammer9033/TheSalonApp.git
+bash TheSalonApp/cloud/deploy.sh
+```
+
+It prints the live address at the end (sign in with `manager` / `manager`). What it sets up:
+
+- **Cloud Run** in `us-east1`, scales to zero when nobody is using it, at most one instance. Normal demo use stays inside the monthly free tier (2 million requests, 180,000 vCPU-seconds, 360,000 GiB-seconds).
+- **A budget of 1** (in the billing account's currency) with email alerts at 50%, 90% and 100%.
+- **A kill switch** (`cloud/kill-switch`): the budget posts to Pub/Sub, and when spend goes over the limit the function removes billing from the project, which stops everything in it. Budget data can lag by a few hours, so a small overshoot is possible but it cannot keep growing. To turn it back on, re-link billing under Billing › My projects.
+- Only the newest app image is kept, so storage stays inside the free 0.5 GB.
+
+The demo keeps its data in memory: when the app sleeps after being idle, the next visit starts a fresh demo salon. That is on purpose, so every prospect sees clean sample data.
+
 ## Running it in the cloud instead (optional)
 
 For access from anywhere with HTTPS, run the included `Dockerfile` on a small server (Render, Fly.io, Railway or a $5 VPS) with a persistent disk mounted at `/data`, behind HTTPS. Set `SECURE_COOKIES=1` and `TRUST_PROXY=1`, and set the app address in Settings so Google Drive's redirect URI uses it. Same app, same data model.
