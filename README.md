@@ -8,7 +8,7 @@ A simple, elegant salon management app for iPad and Mac: customer lookup by phon
 
 1. Install **Node.js** (LTS) from <https://nodejs.org>.
 2. Download this app (GitHub › **Code › Download ZIP**) and unzip it.
-3. Double-click **`Start The Salon App.command`** (Mac), or run `npm install && npm start`.
+3. Double-click **`Start The Salon App.command`** (Mac) or **`Start The Salon App.bat`** (Windows), or run `npm install && npm start`.
 4. Open **http://localhost:4000** and sign in with:
 
    | Username | Password |
@@ -43,6 +43,18 @@ The first start builds a sample salon, **Bella Salon & Spa**, so every screen ha
 The design decisions (database schema, architecture, Google Drive approach, security review and open questions) are in [docs/PLAN.md](docs/PLAN.md).
 
 ---
+
+## Run it on a Windows PC
+
+1. Install **Node.js** (LTS) from <https://nodejs.org>: download the Windows installer (.msi) and click **Next** through it with the default choices.
+2. On GitHub press **Code › Download ZIP**. In Downloads, right-click the ZIP › **Extract All…** › **Extract**. (Don't run the app from inside the ZIP.)
+3. In the extracted folder, double-click **`Start The Salon App.bat`**.
+   - If Windows shows "Windows protected your PC", click **More info**, then **Run anyway**.
+   - The first start installs the app (a minute or two). Later starts are quick.
+   - If Windows Firewall asks about "Node.js", tick **Private networks** and click **Allow** (only needed for an iPad).
+4. The browser opens **http://localhost:4000**. Sign in with `manager` / `manager`.
+
+Keep the black window open while using the app (you can minimise it). Closing it stops the app. For an iPad, use the PC's address shown in that window, and set the PC's sleep to **Never** while plugged in (Settings › System › Power).
 
 ## Run it at the salon: Mac + iPad on the same Wi-Fi
 
